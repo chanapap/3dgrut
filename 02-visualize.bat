@@ -1,0 +1,1 @@
+python playground.py --gs_object "D:\3d-recon\3dgrut\runs\garden_3dgrt\garden-test-2606_141820\ours_30000\ckpt_30000.pt"

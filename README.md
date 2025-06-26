@@ -1,3 +1,33 @@
+## HCI: Local Installation on Windows CUDA 11.8
+
+Reference:
+- https://github.com/nv-tlabs/3dgrut/issues/47#issuecomment-2809473278
+- https://github.com/nv-tlabs/3dgrut/issues/47#issuecomment-2963332209
+
+```sh
+conda create -n 3dgrut python=3.11
+conda activate 3dgrut
+conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1  pytorch-cuda=11.8 -c pytorch -c nvidia
+git clone --recursive https://github.com/nv-tlabs/3dgrut.git
+cd 3dgrut
+
+
+# Must Use ## Visual Studio 2019 Developer Command Prompt v16.11.40 ##
+# https://www.techspot.com/downloads/7241-visual-studio-2019.html
+pip install -r requirements.txt
+pip install cython
+pip install https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.5.1_cu118/kaolin-0.17.0-cp311-cp311-win_amd64.whl
+
+
+# In line 190 of CUDAStream.h (located at <your_env_path>/Lib/site_packages/torch/include/c10/cuda/) remove std:: from std::max
+cd ..
+git submodule update --init --recursive
+pip install -e .
+pip install hydra-core
+```
+
+
+
 <p align="center">
   <img height="100" src="assets/3dgrut_logo.png">
 </p>
